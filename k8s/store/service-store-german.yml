@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-german
+  namespace: store-ns
+spec:
+  selector:
+    app: store
+    version: german
+  ports:
+  - port: 8080
+    targetPort: 8080

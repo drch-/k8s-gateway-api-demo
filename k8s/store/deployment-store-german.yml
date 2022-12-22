@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store-german
+  namespace: store-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: store
+      version: german
+  template:
+    metadata:
+      labels:
+        app: store
+        version: german
+    spec:
+      containers:
+      - name: whereami
+        image: us-docker.pkg.dev/google-samples/containers/gke/whereami:v1.2.11
+        ports:
+          - containerPort: 8080
+        env:
+        - name: METADATA
+          value: "store-vGerman"

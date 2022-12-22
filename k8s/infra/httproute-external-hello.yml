@@ -1,0 +1,17 @@
+# this should be rejected because the namespace doesn't allow attachments to the external-http gateway
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: hello-external
+  namespace: infra-ns
+spec:
+  parentRefs:
+  - kind: Gateway
+    name: external-http
+  rules:
+    - matches:
+      - path:
+          value: /hello-external-world
+      backendRefs:
+      - name: hello
+        port: 8080

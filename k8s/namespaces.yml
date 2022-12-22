@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: infra-ns
+  labels:
+    external-gateway-access: "true"
+    internal-gateway-access: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: site-ns
+  labels:
+    internal-gateway-access: "true"
+    external-gateway-access: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: store-ns
+  labels:
+    external-gateway-access: "true"
+    internal-gateway-access: "true"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: api-ns
+  labels:
+    internal-gateway-access: "true"

@@ -1,0 +1,29 @@
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: store-internal
+  namespace: store-ns
+spec:
+  parentRefs:
+  - kind: Gateway
+    name: internal-http
+    namespace: infra-ns 
+  hostnames:
+  - "store.internal.gateway-demo.dh6n.com"
+  rules:
+  - backendRefs:
+    - name: store-v1
+      port: 8080
+  - matches:
+    - headers:
+      - name: env
+        value: canary
+    backendRefs:
+    - name: store-v2
+      port: 8080
+  - matches:
+    - path:
+        value: /de
+    backendRefs:
+    - name: store-german
+      port: 8080

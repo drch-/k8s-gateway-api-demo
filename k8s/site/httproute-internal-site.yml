@@ -1,0 +1,17 @@
+
+kind: HTTPRoute
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: site-internal
+  namespace: site-ns
+spec:
+  parentRefs:
+  - kind: Gateway
+    name: internal-http
+    namespace: infra-ns
+  hostnames:
+  - "site.internal.gateway-demo.dh6n.com"
+  rules:
+  - backendRefs:
+    - name: site-v1
+      port: 8080

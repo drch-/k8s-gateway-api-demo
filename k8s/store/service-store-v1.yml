@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: store-v1
+  namespace: store-ns
+spec:
+  selector:
+    app: store
+    version: v1
+  ports:
+  - port: 8080
+    targetPort: 8080
