@@ -1,0 +1,3 @@
+name: asm-gatewayapi-sample
+runtime: nodejs
+description: sample deployment of gke and asm
